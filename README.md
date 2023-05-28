@@ -10,7 +10,7 @@ We have also seen that the most time-consuming step in JavaScript execution is t
 
 We also saw that using Typescript has no effect on optimization, hence I will try to find some naturally typed languages.
 
-Therefore, in this article, I will explore alternatives to JavaScript for building a front-end web application, including Reason ML, ELM, Haskell Miso, Python Flask and Rust Yew.
+Therefore, in this article, I will explore alternatives to JavaScript for building a front-end web application, including Reason ML, ELM and Rust Yew.
 
 ## Benchmark Execution Plan
 The screens of the application that we are going to develop are as follows:
@@ -70,10 +70,6 @@ I'm going to take a closer look at these languages and frameworks:
 🔸Reason ML
 
 🔸ELM
-
-🔸Haskell Miso
-
-🔸Python Flask
 
 🔸Rust Yew
 
