@@ -1,4 +1,5 @@
-# frontend-web-benchmarks
+# Front-End Web without JavaScript
+Comparative Analysis of JavaScript Alternatives
 
 ## Introduction
 Let's continue to dig into the subject of Front-end Web performances and push techniques and studies towards new areas of improvement.
