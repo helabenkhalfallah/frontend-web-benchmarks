@@ -1,0 +1,11 @@
+{
+  "name": "reason-ml",
+  "version": "1.0.0",
+  "description": "Reason ML Frontend Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Ben Khalfallah Héla",
+  "license": "ISC"
+}

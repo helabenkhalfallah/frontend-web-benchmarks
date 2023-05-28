@@ -1,0 +1,11 @@
+{
+  "name": "js-react",
+  "version": "1.0.0",
+  "description": "JS, React and Redux application",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Ben Khalfallah Héla",
+  "license": "ISC"
+}
