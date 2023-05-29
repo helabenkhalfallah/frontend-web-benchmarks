@@ -27,13 +27,4 @@ jobs:
         cd js-react-frontend
         npm install
         npm run lint
-        npm run build
-    
-    - name: GitHub Pages Deploy
-      uses: appleboy/gh-pages-action@v0.0.2
-      with:
-        # git branch to target
-        target_branch: main
-       
-        # directory of content to publish
-        pages_directory: js-react-frontend/dist/
+        npm run deploy
