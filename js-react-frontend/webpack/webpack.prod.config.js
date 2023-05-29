@@ -14,7 +14,8 @@ module.exports = {
 	entry: './src/index.js',
 	output: {
 		publicPath: '/',
-		filename: '[name].bundle.js',
+		filename: 'js-frontend-react-bundle.js',
+		chunkFilename: 'js-frontend-react-[id]-bundle.js',
 		path: path.resolve(__dirname, '../dist'),
 		clean: true,
 	},
@@ -62,16 +63,19 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebPackPlugin({
-			template: './public/index.html',
-			filename: './index.html',
+			inject: true,
+			publicPath: 'frontend-web-benchmarks',
+			template: path.resolve(__dirname, '../public/index.html'),
+			filename: 'index.html',
 		}),
 		new MiniCssExtractPlugin({
-			filename: '[name].css',
-			chunkFilename: '[id].css',
+			filename: 'js-frontend-react-bundle.css',
+			chunkFilename: 'js-frontend-react-[id]-bundle.css',
 		}),
 		new CssMinimizerPlugin(),
 	],
 	optimization: {
+		realContentHash: false,
 		minimize: true,
 		minimizer: [
 			new TerserPlugin({
