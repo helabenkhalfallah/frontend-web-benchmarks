@@ -1,0 +1,39 @@
+name: NodeJS with Webpack
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Build
+      run: |
+        cd js-react-frontend
+        npm install
+        npm run lint
+        npm run build
+    
+    - name: GitHub Pages Deploy
+      uses: appleboy/gh-pages-action@v0.0.2
+      with:
+        # git branch to target
+        target_branch: main
+       
+        # directory of content to publish
+        pages_directory: js-react-frontend/dist/
