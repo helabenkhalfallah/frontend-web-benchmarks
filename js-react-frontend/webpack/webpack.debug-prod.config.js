@@ -3,6 +3,8 @@ const TerserPlugin = require('terser-webpack-plugin');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // eslint-disable-next-line import/no-extraneous-dependencies
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+// eslint-disable-next-line import/no-extraneous-dependencies
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -70,6 +72,7 @@ module.exports = {
 			chunkFilename: '[id].css',
 		}),
 		new CssMinimizerPlugin(),
+		new BundleAnalyzerPlugin(),
 	],
 	optimization: {
 		minimize: true,

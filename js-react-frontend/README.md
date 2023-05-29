@@ -53,5 +53,5 @@ npm run lint:fix
 To anlayze bundle in PROD mode, you should run:
 
 ```js
-npm run build:prod
+npm run analyze
 ```
