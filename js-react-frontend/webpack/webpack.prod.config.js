@@ -64,7 +64,7 @@ module.exports = {
 	plugins: [
 		new HtmlWebPackPlugin({
 			inject: true,
-			publicPath: 'frontend-web-benchmarks',
+			publicPath: '.',
 			template: path.resolve(__dirname, '../public/index.html'),
 			filename: 'index.html',
 		}),
