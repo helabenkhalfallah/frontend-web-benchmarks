@@ -11,11 +11,13 @@ const path = require('path');
 
 module.exports = {
 	mode: 'production',
-	entry: './src/index.js',
+	entry: {
+		'frontend-react': './src/index.js',
+	},
 	output: {
 		publicPath: '/',
-		filename: 'js-frontend-react-bundle.js',
-		chunkFilename: 'js-frontend-react-[id]-bundle.js',
+		filename: '[name].js',
+		chunkFilename: 'frontend-react-[id].chunk.js',
 		path: path.resolve(__dirname, '../dist'),
 		clean: true,
 	},
@@ -63,14 +65,26 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebPackPlugin({
-			inject: true,
 			publicPath: '.',
+			inject: true,
 			template: path.resolve(__dirname, '../public/index.html'),
 			filename: 'index.html',
+			minify: {
+				removeComments: true,
+				collapseWhitespace: true,
+				removeRedundantAttributes: true,
+				useShortDoctype: true,
+				removeEmptyAttributes: true,
+				removeStyleLinkTypeAttributes: true,
+				keepClosingSlash: true,
+				minifyJS: true,
+				minifyCSS: true,
+				minifyURLs: true,
+			},
 		}),
 		new MiniCssExtractPlugin({
-			filename: 'js-frontend-react-bundle.css',
-			chunkFilename: 'js-frontend-react-[id]-bundle.css',
+			filename: 'static/css/[name].[contenthash:8].css',
+			chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
 		}),
 		new CssMinimizerPlugin(),
 	],

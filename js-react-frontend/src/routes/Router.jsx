@@ -12,7 +12,6 @@ const Router = () => (
 		<BrowserRouter>
 			<Routes>
 				<Route
-					exact
 					path={ARTICLES_LIST_PATH}
 					element={<ArticlesListPage />}
 				/>

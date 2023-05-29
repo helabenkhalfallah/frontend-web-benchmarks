@@ -4,7 +4,9 @@ const path = require('path');
 
 module.exports = {
 	mode: 'development',
-	entry: './src/index.js',
+	entry: {
+		'frontend-react': './src/index.js',
+	},
 	output: {
 		publicPath: '/',
 		filename: 'js-frontend-react-bundle.js',
@@ -61,8 +63,10 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebPackPlugin({
-			template: '../public/index.html',
-			filename: './index.html',
+			publicPath: '.',
+			inject: true,
+			template: path.resolve(__dirname, '../public/index.html'),
+			filename: 'index.html',
 		}),
 	],
 };
