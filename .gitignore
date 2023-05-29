@@ -168,4 +168,8 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
+
+# webpack files
+**/stats.json
+
 # End of https://www.toptal.com/developers/gitignore/api/node
