@@ -7,7 +7,6 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve -c webpack/webpack.dev.config.js --progress --color",
-    "prebuild" : "npm run build",
     "build": "webpack -c webpack/webpack.prod.config.js --progress --color",
     "analyze": "webpack -c webpack/webpack.debug-prod.config.js --progress --color",
     "lint": "eslint --cache --cache-location ./.eslintcache --ext js,jsx ./src",
