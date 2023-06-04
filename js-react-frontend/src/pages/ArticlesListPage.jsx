@@ -13,7 +13,7 @@ class ArticlesListPage extends Component {
 	}
 
 	render() {
-		return <div>Article Page List</div>;
+		return <div>**Article Page List**</div>;
 	}
 }
 

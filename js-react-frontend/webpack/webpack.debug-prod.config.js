@@ -23,7 +23,7 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, '../dist'),
-		publicPath: '/public',
+		publicPath: '/public/',
 		filename: '[name].js',
 		chunkFilename: 'frontend-react-[id].chunk.js',
 		clean: true,

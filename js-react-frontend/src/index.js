@@ -16,7 +16,7 @@ root.render(<Router />);
 if ('serviceWorker' in navigator) {
 	window.addEventListener('load', () => {
 		navigator.serviceWorker
-			.register('./public/service-worker.js')
+			.register('./service-worker.js')
 			.then((registration) => {
 				// eslint-disable-next-line no-console
 				console.log('SW registered: ', registration);
