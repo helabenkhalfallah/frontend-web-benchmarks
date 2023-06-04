@@ -6,7 +6,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const CompressionPlugin = require('compression-webpack-plugin');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
+const zlib = require('zlib');
 const path = require('path');
 
 module.exports = {
@@ -15,10 +20,10 @@ module.exports = {
 		'frontend-react': './src/index.js',
 	},
 	output: {
-		publicPath: '/',
+		path: path.resolve(__dirname, '../dist'),
+		publicPath: '/public',
 		filename: '[name].js',
 		chunkFilename: 'frontend-react-[id].chunk.js',
-		path: path.resolve(__dirname, '../dist'),
 		clean: true,
 	},
 	module: {
@@ -87,6 +92,31 @@ module.exports = {
 			chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
 		}),
 		new CssMinimizerPlugin(),
+		new WorkboxPlugin.GenerateSW({
+			// these options encourage the ServiceWorkers to get in there fast
+			// and not allow any straggling "old" SWs to hang around
+			clientsClaim: true,
+			skipWaiting: true,
+		}),
+		new CompressionPlugin({
+			filename: '[path][base].gz',
+			algorithm: 'gzip',
+			test: /\.js$|\.css$|\.html$/,
+			threshold: 10240,
+			minRatio: 0.8,
+		}),
+		new CompressionPlugin({
+			filename: '[path][base].br',
+			algorithm: 'brotliCompress',
+			test: /\.(js|css|html|svg)$/,
+			compressionOptions: {
+				params: {
+					[zlib.constants.BROTLI_PARAM_QUALITY]: 11,
+				},
+			},
+			threshold: 10240,
+			minRatio: 0.8,
+		}),
 	],
 	optimization: {
 		realContentHash: false,

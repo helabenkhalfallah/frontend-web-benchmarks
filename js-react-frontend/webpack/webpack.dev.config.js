@@ -8,17 +8,27 @@ module.exports = {
 		'frontend-react': './src/index.js',
 	},
 	output: {
+		path: path.resolve(__dirname, '../dist'),
 		publicPath: '/',
 		filename: 'js-frontend-react-bundle.js',
-		path: path.resolve(__dirname, '../dist'),
 		clean: true,
 	},
 	devServer: {
-		static: '../dist',
-		port: 9001,
+		static: {
+			directory: path.resolve(__dirname, '../dist'),
+			publicPath: '/',
+		},
 		historyApiFallback: true,
-		open: true,
-		hot: true,
+		allowedHosts: 'all',
+		compress: true,
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+			'Access-Control-Allow-Methods': '*',
+			'Access-Control-Allow-Headers': '*',
+		},
+		devMiddleware: {
+			writeToDisk: true,
+		},
 	},
 	module: {
 		rules: [
