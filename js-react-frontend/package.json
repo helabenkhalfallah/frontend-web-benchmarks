@@ -1,7 +1,7 @@
 {
   "name": "js-react-frontend",
   "version": "1.0.0",
-  "description": "Frontend project using JS(ES6), React and Redux",
+  "description": "Frontend project using JS(ES6) & React",
   "author": "Ben Khalfallah Héla",
   "license": "ISC",
   "main": "index.js",

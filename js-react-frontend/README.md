@@ -1,10 +1,9 @@
-# Frontend project using JS(ES6), React and Redux
+# Frontend project using JS(ES6) & React
 
 ## Used tools
 
 - React JS
 - JavaScript (ES6)
-- Redux
 - Eslint with the Airbnb configuration
 - Prettier
 - Jest and React Testing Library

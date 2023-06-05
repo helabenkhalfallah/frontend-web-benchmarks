@@ -67,9 +67,7 @@ const ProductListPage = () => {
 	return (
 		<>
 			<ProductListHeader>
-				<h1 className='page__title'>
-					Frontend project using JS(ES6), React and Redux
-				</h1>
+				<h1 className='page__title'>Frontend project using JS(ES6) & React</h1>
 			</ProductListHeader>
 			<ProductListBody>
 				<Suspense fallback={<ProductLoader />}>
