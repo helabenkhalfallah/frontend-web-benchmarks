@@ -12,7 +12,16 @@ module.exports = function (api) {
 		'@babel/preset-react',
 	];
 
-	const plugins = ['@babel/plugin-transform-regenerator'];
+	const plugins = [
+		'@babel/plugin-transform-regenerator',
+		[
+			'babel-plugin-styled-components',
+			{
+				pure: true,
+				transpileTemplateLiterals: true,
+			},
+		],
+	];
 
 	return {
 		presets,

@@ -1,5 +1,5 @@
 const Path = {
-	ARTICLES_LIST_PATH: '/articles_list',
+	PRODUCT_LIST_PATH: '/product_list',
 };
 
 export default Path;

@@ -1,9 +1,9 @@
 import { lazy } from 'react';
 
-const ArticlesListPage = lazy(() => import('../pages/ArticlesListPage'));
+const ProductListPage = lazy(() => import('../pages/ProductListPage'));
 
 const LazyRoutes = {
-	ArticlesListPage,
+	ProductListPage,
 };
 
 export default LazyRoutes;

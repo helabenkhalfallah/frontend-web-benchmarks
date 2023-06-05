@@ -37,6 +37,7 @@ module.exports = {
 		'prefer-arrow-callback': 'off',
 
 		// react rules
+		'react/no-unstable-nested-components': 'off',
 		'react/jsx-props-no-spreading': 'off',
 		'react/function-component-definition': [
 			2,

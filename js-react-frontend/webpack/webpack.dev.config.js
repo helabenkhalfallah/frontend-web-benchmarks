@@ -48,12 +48,25 @@ module.exports = {
 				],
 			},
 			{
-				test: /\.s[ac]ss$/i,
+				test: /\.css$/i,
+				exclude: /node_modules\/(?!react-virtualized).*/,
+				use: [
+					'style-loader', //
+					'css-loader',
+				],
+			},
+			{
+				test: /\.scss$/i,
+				exclude: /node_modules\/(?!react-virtualized).*/,
 				use: [
 					'style-loader', //
 					'css-loader',
 					'sass-loader',
 				],
+			},
+			{
+				test: /\.(png|svg|jpg|jpeg|gif)$/i,
+				type: 'asset/resource',
 			},
 		],
 	},
