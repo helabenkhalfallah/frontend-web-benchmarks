@@ -14,4 +14,4 @@ const ProductListHeader = styled.header`
 	}
 `;
 
-export default ProductListHeader
+export default ProductListHeader;
