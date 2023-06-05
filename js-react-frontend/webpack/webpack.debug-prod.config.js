@@ -48,7 +48,7 @@ module.exports = {
 			},
 			{
 				test: /\.css$/i,
-				exclude: /node_modules\/(?!react-virtualized).*/,
+				exclude: /node_modules\/(?!react-virtualized|slick-).*/,
 				use: [
 					'style-loader', //
 					'css-loader',
@@ -56,7 +56,7 @@ module.exports = {
 			},
 			{
 				test: /\.scss$/i,
-				exclude: /node_modules\/(?!react-virtualized).*/,
+				exclude: /node_modules\/(?!react-virtualized|slick-).*/,
 				use: [
 					'style-loader', //
 					'css-loader',
