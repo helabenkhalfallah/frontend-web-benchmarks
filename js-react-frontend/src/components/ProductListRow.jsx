@@ -7,17 +7,28 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import PlaceHolder from '../assets/SM-placeholder.png';
 
 const ProductListRowWrapper = styled.article`
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	height: 100%;
-	background-color: #fff;
+	.product__card {
+		width: 620px;
+		height: 140px;
+		margin: 5px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		background-color: #fff;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+		transition: 0.3s;
+
+		&:hover {
+			box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+		}
+	}
 
 	.product__image {
 		width: 140px;
 		height: 140px;
 		aspect-ratio: 16 / 9;
 		object-fit: cover;
+		margin-top: 5px;
 	}
 
 	product__infos {
@@ -51,25 +62,27 @@ const ProductListRow = ({ item, style }) => {
 			role='row'
 			style={style}
 		>
-			<LazyLoadImage
-				className='product__image'
-				role='cell'
-				alt='Product Thumbnail'
-				placeholderSrc={PlaceHolder}
-				src={item?.thumbnail}
-			/>
-			<div
-				className='product__infos'
-				role='cell'
-			>
-				<h3 className='product__title'>{item?.title}</h3>
-				<p className='product__description'>{item?.description}</p>
-				<a
-					className='product__link'
-					href={`./product_details?id=${item.id}`}
+			<div className='product__card'>
+				<LazyLoadImage
+					className='product__image'
+					role='cell'
+					alt='Product Thumbnail'
+					placeholderSrc={PlaceHolder}
+					src={item?.thumbnail}
+				/>
+				<div
+					className='product__infos'
+					role='cell'
 				>
-					Open Product Details
-				</a>
+					<h3 className='product__title'>{item?.title}</h3>
+					<p className='product__description'>{item?.description}</p>
+					<a
+						className='product__link'
+						href={`./product_details?id=${item.id}`}
+					>
+						Open Product Details
+					</a>
+				</div>
 			</div>
 		</ProductListRowWrapper>
 	);

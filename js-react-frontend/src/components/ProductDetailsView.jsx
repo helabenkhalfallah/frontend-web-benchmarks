@@ -1,8 +1,11 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import Slider from 'react-slick';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'slick-carousel/slick/slick.css';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'slick-carousel/slick/slick-theme.css';
 
 const ProductDetailsSection = styled.section`
@@ -11,8 +14,16 @@ const ProductDetailsSection = styled.section`
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
-	width: 100%;
+	align-items: center;
+	width: 90%;
 	margin: 1rem;
+	background-color: #fff;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	transition: 0.3s;
+
+	&:hover {
+		box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+	}
 
 	.product__details--title {
 		color: #192e66;
@@ -27,12 +38,14 @@ const ProductDetailsSection = styled.section`
 		font-size: 1rem;
 		margin-left: 1rem;
 		flex: 0 1 100%;
+		text-align: center;
 	}
 
 	.product__details--price-infos {
 		flex: 0 1 100%;
 		text-align: center;
 		margin-top: 2rem;
+		margin-bottom: 2rem;
 	}
 
 	.product__details--price {
@@ -45,20 +58,19 @@ const ProductDetailsSection = styled.section`
 		font-size: 1rem;
 	}
 
-	.product__details--image-slider {
-		width: 400px;
+	.product__details--slider {
+		width: 300px;
 		height: 300px;
-		margin-top: 2rem;
 	}
 
-	.product__details--image-slider-controls {
+	.product__details--slider-controls {
 		flex: 0 1 100%;
 		text-align: center;
 		margin-top: 2rem;
 		z-index: 99;
 	}
 
-	.product__details--image-slider-button {
+	.product__details--slider-button {
 		margin: 1rem;
 	}
 `;
@@ -84,7 +96,7 @@ const ProductDetailsView = ({ details }) => {
 			<Slider
 				ref={imgCarousel}
 				{...IMAGE_SLIDER_SETTINGS}
-				className='product__details--image-slider'
+				className='product__details--slider'
 				role='slider'
 			>
 				{details?.images?.map((url) => (
@@ -95,16 +107,16 @@ const ProductDetailsView = ({ details }) => {
 					/>
 				))}
 			</Slider>
-			<div className='product__details--image-slider-controls'>
+			<div className='product__details--slider-controls'>
 				<button
-					className='product__details--image-slider-button'
+					className='product__details--slider-button'
 					type='button'
 					onClick={() => imgCarousel?.current?.slickPrev?.()}
 				>
 					{`<`}
 				</button>
 				<button
-					className='product__details--image-slider-button'
+					className='product__details--slider-button'
 					type='button'
 					onClick={() => imgCarousel?.current?.slickNext?.()}
 				>

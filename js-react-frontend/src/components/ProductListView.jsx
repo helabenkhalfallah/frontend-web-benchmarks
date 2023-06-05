@@ -22,7 +22,6 @@ const ProductListSection = styled.section`
 
 	.product__list {
 		border: 1px solid #8cabff;
-		flex: 0 1 80%;
 	}
 `;
 
