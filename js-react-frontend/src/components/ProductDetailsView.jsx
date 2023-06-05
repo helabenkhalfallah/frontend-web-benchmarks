@@ -63,6 +63,13 @@ const ProductDetailsSection = styled.section`
 		height: 300px;
 	}
 
+	.product__details--slider-image {
+		width: 300px;
+		height: 300px;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+	}
+
 	.product__details--slider-controls {
 		flex: 0 1 100%;
 		text-align: center;
@@ -80,7 +87,6 @@ const IMAGE_SLIDER_SETTINGS = {
 	arrows: false,
 	lazyLoad: true,
 	infinite: true,
-	fade: true,
 	speed: 500,
 	slidesToShow: 1,
 	slidesToScroll: 1,
@@ -102,6 +108,7 @@ const ProductDetailsView = ({ details }) => {
 				{details?.images?.map((url) => (
 					<img
 						key={url}
+						className='product__details--slider-image'
 						alt='Product Quick View'
 						src={url}
 					/>
