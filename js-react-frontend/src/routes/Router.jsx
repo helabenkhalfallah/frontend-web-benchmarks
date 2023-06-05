@@ -7,9 +7,9 @@ import Path from './Path';
 
 const queryClient = new QueryClient();
 
-const { PRODUCT_LIST_PATH } = Path;
+const { PRODUCT_LIST_PATH, PRODUCT_DETAILS_PATH } = Path;
 
-const { ProductListPage } = LazyRoute;
+const { ProductListPage, ProductDetailsPage } = LazyRoute;
 
 const Router = () => (
 	<Suspense fallback={<div>Loading</div>}>
@@ -19,6 +19,10 @@ const Router = () => (
 					<Route
 						path={PRODUCT_LIST_PATH}
 						element={<ProductListPage />}
+					/>
+					<Route
+						path={PRODUCT_DETAILS_PATH}
+						element={<ProductDetailsPage />}
 					/>
 					<Route
 						path='/'

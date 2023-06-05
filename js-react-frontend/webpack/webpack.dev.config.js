@@ -4,6 +4,7 @@ const path = require('path');
 
 module.exports = {
 	mode: 'development',
+	devtool: 'eval',
 	entry: {
 		'frontend-react': './src/index.js',
 	},

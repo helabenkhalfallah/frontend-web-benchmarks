@@ -1,22 +1,27 @@
 import React, { useEffect, Suspense, lazy } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import { onCLS, onFID, onLCP } from 'web-vitals';
 import ProductLoader from '../components/ProductLoader';
-import 'react-virtualized/styles.css';
 
 const ProductListHeader = lazy(() => import('../components/ProductListHeader'));
 const ProductListFooter = lazy(() => import('../components/ProductListFooter'));
 const ProductListBody = lazy(() => import('../components/ProductListBody'));
-const ProductListView = lazy(() => import('../components/ProductListView'));
 
-const ProductListPage = () => {
+const ProductDetailsView = lazy(() =>
+	import('../components/ProductDetailsView')
+);
+
+const ProductDetailsPage = () => {
+	const [searchParams] = useSearchParams();
+
 	const { isLoading, error, data } = useQuery({
 		queryKey: ['repoData'],
 		queryFn: () =>
 			axios
-				.get('https://dummyjson.com/products')
-				.then((response) => response?.data?.products),
+				.get(`https://dummyjson.com/products/${searchParams?.get?.('id')}`)
+				.then((response) => response?.data),
 	});
 
 	useEffect(() => {
@@ -39,7 +44,7 @@ const ProductListPage = () => {
 			</ProductListHeader>
 			<ProductListBody>
 				<Suspense fallback={<ProductLoader />}>
-					<ProductListView data={data} />
+					<ProductDetailsView details={data} />
 				</Suspense>
 			</ProductListBody>
 			<ProductListFooter>
@@ -51,10 +56,4 @@ const ProductListPage = () => {
 	);
 };
 
-ProductListPage.propTypes = {};
-
-ProductListPage.defaultProps = {};
-
-ProductListPage.displayName = 'ProductListPage';
-
-export default ProductListPage;
+export default ProductDetailsPage;

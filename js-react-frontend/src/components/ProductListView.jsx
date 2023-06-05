@@ -33,9 +33,9 @@ const ProductList = ({ data }) => (
 			className='product__list'
 			role='grid'
 			aria-readonly={null}
-			width={600}
+			width={650}
 			height={300}
-			rowHeight={110}
+			rowHeight={150}
 			rowCount={data?.length}
 			rowRenderer={({ index, key, style }) => (
 				<ProductListRow

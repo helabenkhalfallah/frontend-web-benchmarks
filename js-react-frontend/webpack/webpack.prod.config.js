@@ -16,6 +16,7 @@ const path = require('path');
 
 module.exports = {
 	mode: 'production',
+	devtool: 'source-map',
 	entry: {
 		'frontend-react': './src/index.js',
 	},

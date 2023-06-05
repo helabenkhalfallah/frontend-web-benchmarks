@@ -7,16 +7,15 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import PlaceHolder from '../assets/SM-placeholder.png';
 
 const ProductListRowWrapper = styled.article`
-	height: 100%;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	padding: 0 5px;
+	height: 100%;
 	background-color: #fff;
 
 	.product__image {
-		width: 120px;
-		height: 100px;
+		width: 140px;
+		height: 140px;
 		aspect-ratio: 16 / 9;
 		object-fit: cover;
 	}
@@ -28,17 +27,21 @@ const ProductListRowWrapper = styled.article`
 	}
 
 	.product__title {
-		height: 30px;
-		padding: 0 5px;
+		line-height: 15px;
 		color: #20397f;
 		font-size: 1rem;
+		margin-left: 1rem;
 	}
 
 	.product__description {
-		height: 30px;
-		padding: 0 5px;
+		line-height: 20px;
 		color: #060b19;
 		font-size: 1rem;
+		margin-left: 1rem;
+	}
+
+	.product__link {
+		margin-left: 2rem;
 	}
 `;
 
@@ -61,6 +64,12 @@ const ProductListRow = ({ item, style }) => {
 			>
 				<h3 className='product__title'>{item?.title}</h3>
 				<p className='product__description'>{item?.description}</p>
+				<a
+					className='product__link'
+					href={`./product_details?id=${item.id}`}
+				>
+					Open Product Details
+				</a>
 			</div>
 		</ProductListRowWrapper>
 	);
@@ -68,6 +77,7 @@ const ProductListRow = ({ item, style }) => {
 
 ProductListRow.propTypes = {
 	item: PropTypes.shape({
+		id: PropTypes.number,
 		thumbnail: PropTypes.string,
 		title: PropTypes.string,
 		description: PropTypes.string,
