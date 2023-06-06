@@ -1,51 +1,87 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { List } from 'react-virtualized';
-import ProductListRow from './ProductListRow';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { FixedSizeList } from 'react-window';
+import InfiniteLoader from 'react-window-infinite-loader';
+import ProductLoader from './ProductLoader';
+
+const ProductListRow = lazy(() => import('./ProductListRow'));
 
 const ProductListSection = styled.section`
-	font-family: Monospace, Arial, Helvetica, sans-serif;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
+	font-family: Arial, sans-serif;
+	display: block;
 	width: 100%;
-	margin: 1rem;
 
 	.product__list--title {
 		color: #192e66;
-		font-size: 1.5rem;
+		font-size: 1.25rem;
 		text-align: center;
-		flex: 0 1 100%;
 	}
 
 	.product__list {
-		border: 1px solid #8cabff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 500px;
 	}
 `;
 
-const ProductList = ({ data }) => (
-	<ProductListSection>
-		<h2 className='product__list--title'>Product List</h2>
-		<List
-			className='product__list'
-			role='grid'
-			aria-readonly={null}
-			width={650}
-			height={300}
-			rowHeight={150}
-			rowCount={data?.length}
-			rowRenderer={({ index, key, style }) => (
-				<ProductListRow
-					key={key}
-					item={data[index]}
-					style={style}
-				/>
-			)}
-		/>
-	</ProductListSection>
-);
+const ProductList = ({
+	data,
+	hasNextPage,
+	isNextPageLoading,
+	loadNextPage,
+}) => {
+	const itemCount =
+		(hasNextPage && data?.length ? data.length + 1 : data?.length) || 0;
+	const loadMoreItems = isNextPageLoading ? () => {} : loadNextPage;
+	const isItemLoaded = (index) => !hasNextPage || index < data?.length;
+
+	return (
+		<Suspense fallback={<ProductLoader />}>
+			<ProductListSection>
+				<h2 className='product__list--title'>Product List</h2>
+				<div
+					className='product__list'
+					role='grid'
+				>
+					{itemCount === 0 && <span>No Data</span>}
+					{itemCount > 0 && (
+						<InfiniteLoader
+							isItemLoaded={isItemLoaded}
+							itemCount={itemCount}
+							loadMoreItems={loadMoreItems}
+						>
+							{({ onItemsRendered, ref }) => (
+								<FixedSizeList
+									ref={ref}
+									itemCount={itemCount}
+									itemSize={150}
+									height={500}
+									width={500}
+									onItemsRendered={onItemsRendered}
+								>
+									{({ index, style }) => {
+										if (!isItemLoaded(index)) {
+											return <ProductLoader />;
+										}
+										return (
+											<ProductListRow
+												style={style}
+												item={data?.[index]}
+											/>
+										);
+									}}
+								</FixedSizeList>
+							)}
+						</InfiniteLoader>
+					)}
+				</div>
+			</ProductListSection>
+		</Suspense>
+	);
+};
 
 ProductList.propTypes = {
 	data: PropTypes.arrayOf(
@@ -55,10 +91,16 @@ ProductList.propTypes = {
 			description: PropTypes.string,
 		})
 	),
+	hasNextPage: PropTypes.bool,
+	isNextPageLoading: PropTypes.bool,
+	loadNextPage: PropTypes.func,
 };
 
 ProductList.defaultProps = {
 	data: null,
+	hasNextPage: false,
+	isNextPageLoading: false,
+	loadNextPage: () => {},
 };
 
 ProductList.displayName = 'ProductList';

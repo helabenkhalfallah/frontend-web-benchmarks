@@ -9,7 +9,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const ProductDetailsSection = styled.section`
-	font-family: Monospace, Arial, Helvetica, sans-serif;
+	font-family: Arial, sans-serif;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;

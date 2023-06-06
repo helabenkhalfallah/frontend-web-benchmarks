@@ -8,6 +8,7 @@ import ProductLoader from '../components/ProductLoader';
 const ProductListHeader = lazy(() => import('../components/ProductListHeader'));
 const ProductListFooter = lazy(() => import('../components/ProductListFooter'));
 const ProductListBody = lazy(() => import('../components/ProductListBody'));
+const ProductListTitle = lazy(() => import('../components/ProductListTitle'));
 
 const ProductDetailsView = lazy(() =>
 	import('../components/ProductDetailsView')
@@ -33,26 +34,32 @@ const ProductDetailsPage = () => {
 		onLCP(console.log);
 	}, []);
 
-	if (isLoading) return <ProductLoader />;
-
-	if (error) return 'An error has occurred: ';
+	const showError = error || !data || false;
 
 	return (
-		<>
+		<Suspense fallback={<ProductLoader />}>
 			<ProductListHeader>
-				<h1 className='page__title'>Frontend project using JS(ES6) & React</h1>
+				<ProductListTitle>React Frontend Project</ProductListTitle>
 			</ProductListHeader>
 			<ProductListBody>
-				<Suspense fallback={<ProductLoader />}>
-					<ProductDetailsView details={data} />
-				</Suspense>
+				{isLoading ? (
+					<ProductLoader />
+				) : (
+					<>
+						{showError ? (
+							<div>An error was occured</div>
+						) : (
+							<ProductDetailsView details={data} />
+						)}
+					</>
+				)}
 			</ProductListBody>
 			<ProductListFooter>
 				<span className='page__copyright'>
 					© POC Application For Benchmarking Frontend Framework
 				</span>
 			</ProductListFooter>
-		</>
+		</Suspense>
 	);
 };
 

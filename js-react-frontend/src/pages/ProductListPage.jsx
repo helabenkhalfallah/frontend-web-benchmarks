@@ -1,23 +1,38 @@
-import React, { useEffect, Suspense, lazy } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import { onCLS, onFID, onLCP } from 'web-vitals';
 import ProductLoader from '../components/ProductLoader';
-import 'react-virtualized/styles.css';
 
 const ProductListHeader = lazy(() => import('../components/ProductListHeader'));
 const ProductListFooter = lazy(() => import('../components/ProductListFooter'));
 const ProductListBody = lazy(() => import('../components/ProductListBody'));
 const ProductListView = lazy(() => import('../components/ProductListView'));
+const ProductListTitle = lazy(() => import('../components/ProductListTitle'));
 
 const ProductListPage = () => {
-	const { isLoading, error, data } = useQuery({
-		queryKey: ['repoData'],
-		queryFn: () =>
-			axios
-				.get('https://dummyjson.com/products')
-				.then((response) => response?.data?.products),
-	});
+	const [
+		currentPage, //
+		setCurrentPage,
+	] = useState(0);
+	const [
+		productDataSource, //
+		setProductDataSource,
+	] = useState([]);
+
+	const { isLoading, data, refetch } = useQuery(
+		{
+			queryKey: ['repoData'],
+			queryFn: () =>
+				axios
+					.get(`https://dummyjson.com/products?skip=${currentPage}&limit=10`)
+					.then((response) => response?.data),
+		},
+		{
+			refetchOnWindowFocus: false,
+			enabled: false,
+		}
+	);
 
 	useEffect(() => {
 		// eslint-disable-next-line no-console
@@ -26,28 +41,42 @@ const ProductListPage = () => {
 		onFID(console.log);
 		// eslint-disable-next-line no-console
 		onLCP(console.log);
+
+		// first fetch
+		refetch();
 	}, []);
 
-	if (isLoading) return <ProductLoader />;
+	useEffect(() => {
+		refetch();
+	}, [currentPage]);
 
-	if (error) return 'An error has occurred: ';
+	useEffect(() => {
+		setProductDataSource([
+			...(productDataSource || []),
+			...(data?.products || []),
+		]);
+	}, [data]);
 
 	return (
-		<>
+		<Suspense fallback={<ProductLoader />}>
 			<ProductListHeader>
-				<h1 className='page__title'>Frontend project using JS(ES6) & React</h1>
+				<ProductListTitle>React Frontend Project</ProductListTitle>
 			</ProductListHeader>
 			<ProductListBody>
-				<Suspense fallback={<ProductLoader />}>
-					<ProductListView data={data} />
-				</Suspense>
+				<ProductListView
+					data={productDataSource}
+					hasNextPage={currentPage < data?.total}
+					isNextPageLoading={isLoading}
+					loadNextPage={(page) => {
+						setCurrentPage(page);
+					}}
+				/>
 			</ProductListBody>
 			<ProductListFooter>
-				<span className='page__copyright'>
-					© POC Application For Benchmarking Frontend Framework
-				</span>
+				<span className='page__copyright'>© POC Application</span>
+				<span className='page__copyright'>Benchmarking Frontend Framework</span>
 			</ProductListFooter>
-		</>
+		</Suspense>
 	);
 };
 

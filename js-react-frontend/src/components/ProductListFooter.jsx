@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 
 const ProductListFooter = styled.footer`
-	font-family: Monospace, Arial, Helvetica, sans-serif;
-	display: block;
-	text-align: center;
+	font-family: Arial, sans-serif;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 	background-color: #fff;
 	margin-top: 2rem;
 
 	.page__copyright {
 		color: #192e66;
-		font-size: 1.5rem;
+		font-size: 1rem;
 		padding: 1rem;
 	}
 `;

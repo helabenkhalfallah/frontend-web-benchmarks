@@ -38,6 +38,7 @@ module.exports = {
 
 		// react rules
 		'react/no-unstable-nested-components': 'off',
+		'react/jsx-no-useless-fragment': 'off',
 		'react/jsx-props-no-spreading': 'off',
 		'react/function-component-definition': [
 			2,

@@ -4,11 +4,10 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import PlaceHolder from '../assets/SM-placeholder.png';
+import ProductImgPlaceHolder from './ProductImgPlaceHolder';
 
 const ProductListRowWrapper = styled.article`
 	.product__card {
-		width: 620px;
 		height: 140px;
 		margin: 5px;
 		display: flex;
@@ -24,10 +23,10 @@ const ProductListRowWrapper = styled.article`
 	}
 
 	.product__image {
-		width: 140px;
-		height: 140px;
+		width: 80px;
+		height: 80px;
 		aspect-ratio: 16 / 9;
-		object-fit: cover;
+		object-fit: scale-down;
 		margin-top: 5px;
 	}
 
@@ -47,11 +46,12 @@ const ProductListRowWrapper = styled.article`
 	.product__description {
 		line-height: 20px;
 		color: #060b19;
-		font-size: 1rem;
+		font-size: 0.8rem;
 		margin-left: 1rem;
 	}
 
 	.product__link {
+		font-size: 0.8rem;
 		margin-left: 2rem;
 	}
 `;
@@ -67,7 +67,7 @@ const ProductListRow = ({ item, style }) => {
 					className='product__image'
 					role='cell'
 					alt='Product Thumbnail'
-					placeholderSrc={PlaceHolder}
+					placeholder={<ProductImgPlaceHolder />}
 					src={item?.thumbnail}
 				/>
 				<div
@@ -75,7 +75,9 @@ const ProductListRow = ({ item, style }) => {
 					role='cell'
 				>
 					<h3 className='product__title'>{item?.title}</h3>
-					<p className='product__description'>{item?.description}</p>
+					<p className='product__description'>
+						{`${item?.description?.slice?.(0, 60)} ...`}
+					</p>
 					<a
 						className='product__link'
 						href={`./product_details?id=${item.id}`}

@@ -7,6 +7,8 @@ const ProductLoader = styled.div`
 	height: 60px;
 	width: 60px;
 	animation: spin 2s linear infinite;
+	margin-left: 50%;
+	margin-top: 10%;
 
 	@keyframes spin {
 		0% {
