@@ -23,7 +23,7 @@ const ProductListSection = styled.section`
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		height: 500px;
+		height: 800px;
 	}
 `;
 
@@ -35,7 +35,7 @@ const ProductList = ({
 }) => {
 	const itemCount =
 		(hasNextPage && data?.length ? data.length + 1 : data?.length) || 0;
-	const loadMoreItems = isNextPageLoading ? () => {} : loadNextPage;
+	const loadMoreItems = isNextPageLoading ? () => { } : loadNextPage;
 	const isItemLoaded = (index) => !hasNextPage || index < data?.length;
 
 	return (
@@ -58,8 +58,8 @@ const ProductList = ({
 									ref={ref}
 									itemCount={itemCount}
 									itemSize={150}
-									height={500}
-									width={500}
+									height={800}
+									width={800}
 									onItemsRendered={onItemsRendered}
 								>
 									{({ index, style }) => {
@@ -100,7 +100,7 @@ ProductList.defaultProps = {
 	data: null,
 	hasNextPage: false,
 	isNextPageLoading: false,
-	loadNextPage: () => {},
+	loadNextPage: () => { },
 };
 
 ProductList.displayName = 'ProductList';
