@@ -1,11 +1,47 @@
 {
-  "name": "reason-ml",
-  "version": "1.0.0",
-  "description": "Reason ML Frontend Application",
-  "main": "index.js",
+  "name": "reason-ml-frontend",
+  "version": "0.1.0",
   "scripts": {
-    "test": "test"
+    "dev": "webpack serve -c webpack/webpack.dev.config.js --progress --color",
+    "watch": "bsb -make-world -w -ws _ ",
+    "start": "npm run dev",
+    "clean": "bsb -clean-world",
+    "bsb-build": "bsb -make-world",
+    "build": "npm run bsb-build && webpack -c webpack/webpack.prod.config.js --progress --color",
+    "analyze": "webpack -c webpack/webpack.debug-prod.config.js --progress --color",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "BuckleScript",
+    "ReasonReact",
+    "reason-react"
+  ],
   "author": "Ben Khalfallah Héla",
-  "license": "ISC"
+  "license": "MIT",
+  "dependencies": {
+    "belt": "=0.0.1",
+    "react": "=16.8.1",
+    "react-dom": "=16.8.1",
+    "reason-react": ">=0.7.1"
+  },
+  "devDependencies": {
+    "bs-platform": "=9.0.2",
+    "moduleserve": "=0.9.0",
+    "compression-webpack-plugin": "=10.0.0",
+    "css-loader": "=6.8.1",
+    "css-minimizer-webpack-plugin": "=5.0.0",
+    "html-loader": "=4.2.0",
+    "html-webpack-plugin": "=5.5.1",
+    "mini-css-extract-plugin": "=2.7.6",
+    "sass": "=1.62.1",
+    "sass-loader": "=13.3.1",
+    "style-loader": "=3.3.3",
+    "terser-webpack-plugin": "=5.3.9",
+    "webpack": "=5.84.1",
+    "webpack-bundle-analyzer-brotli": "=4.0.0",
+    "webpack-cli": "=5.1.1",
+    "webpack-dev-server": "=4.15.0",
+    "workbox-webpack-plugin": "=7.0.0",
+    "zlib": "=1.0.5"
+  }
 }
