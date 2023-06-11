@@ -8,5 +8,10 @@ function ProductListPage(Props) {
 
 var make = ProductListPage;
 
+var $$default = ProductListPage;
+
 exports.make = make;
+exports.$$default = $$default;
+exports.default = $$default;
+exports.__esModule = true;
 /* react Not a pure module */

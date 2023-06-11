@@ -4,3 +4,5 @@ let make = () => {
     {React.string("Product List")}
   </div>
 }
+
+let default = make;
