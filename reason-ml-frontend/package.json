@@ -9,6 +9,7 @@
     "bsb-build": "bsb -make-world",
     "build": "npm run bsb-build && webpack -c webpack/webpack.prod.config.js --progress --color",
     "analyze": "webpack -c webpack/webpack.debug-prod.config.js --progress --color",
+    "format": "bsrefmt --in-place ./src/*.re",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
