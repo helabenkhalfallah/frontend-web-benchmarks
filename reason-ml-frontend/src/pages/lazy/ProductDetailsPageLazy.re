@@ -1,4 +1,4 @@
-module type T = (module type of ProductListPage);
+module type T = (module type of ProductDetailsPage);
 
 /*
   Needed for BuckleScript to not import the original component:
@@ -16,5 +16,7 @@ module UnsafePlaceholder = (val unsafePlaceholder);
 let makeProps = UnsafePlaceholder.makeProps;
 let make =
   LazyImport.(
-    lazy_(() => importComponent(UnsafePlaceholder.make, "./ProductListPage.bs"))
+    lazy_(() =>
+      importComponent(UnsafePlaceholder.make, "../ProductDetailsPage.bs")
+    )
   );

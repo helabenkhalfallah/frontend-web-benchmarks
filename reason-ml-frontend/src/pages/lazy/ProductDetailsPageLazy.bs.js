@@ -13,7 +13,7 @@ function makeProps(prim0, prim1) {
 }
 
 var make = React.lazy(function (param) {
-      return import("./ProductListPage.bs");
+      return import("../ProductDetailsPage.bs");
     });
 
 var UnsafePlaceholder = unsafePlaceholder;
