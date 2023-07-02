@@ -1,14 +1,13 @@
 'use strict';
 
 var React = require("react");
-var Caml_option = require("bs-platform/lib/js/caml_option.js");
 
 var unsafePlaceholder = {};
 
-function makeProps(prim, prim$1) {
+function makeProps(prim0, prim1) {
   var tmp = {};
-  if (prim !== undefined) {
-    tmp.key = Caml_option.valFromOption(prim);
+  if (prim0 !== undefined) {
+    tmp.key = prim0;
   }
   return tmp;
 }
