@@ -7,7 +7,7 @@
     "rescript:clean": "rescript clean -with-deps",
     "start": "npm run webpack:dev",
     "rescript:build": "rescript",
-    "build": "npm run rescript:build && webpack -c webpack/webpack.prod.config.js --progress --color",
+    "build": "npm run rescript:clean && npm run rescript:build && webpack -c webpack/webpack.prod.config.js --progress --color",
     "analyze": "webpack -c webpack/webpack.debug-prod.config.js --progress --color",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
