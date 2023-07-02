@@ -1,6 +1,6 @@
-'use strict';
 
-var React = require("react");
+
+import * as React from "react";
 
 function ProductDetailsPage(Props) {
   return React.createElement("div", undefined, "Product Details");
@@ -10,8 +10,9 @@ var make = ProductDetailsPage;
 
 var $$default = ProductDetailsPage;
 
-exports.make = make;
-exports.$$default = $$default;
-exports.default = $$default;
-exports.__esModule = true;
+export {
+  make ,
+  $$default ,
+  $$default as default,
+}
 /* react Not a pure module */

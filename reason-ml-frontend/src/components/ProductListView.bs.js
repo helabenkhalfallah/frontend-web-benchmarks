@@ -1,13 +1,15 @@
-'use strict';
 
-var React = require("react");
 
-function ProductList(Props) {
+import * as React from "react";
+
+function ProductListView(Props) {
   var message = Props.message;
   return React.createElement("h1", undefined, message);
 }
 
-var make = ProductList;
+var make = ProductListView;
 
-exports.make = make;
+export {
+  make ,
+}
 /* react Not a pure module */

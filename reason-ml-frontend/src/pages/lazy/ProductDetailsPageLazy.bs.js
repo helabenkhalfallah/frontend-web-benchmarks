@@ -1,6 +1,6 @@
-'use strict';
 
-var React = require("react");
+
+import * as React from "react";
 
 var unsafePlaceholder = {};
 
@@ -18,8 +18,10 @@ var make = React.lazy(function (param) {
 
 var UnsafePlaceholder = unsafePlaceholder;
 
-exports.unsafePlaceholder = unsafePlaceholder;
-exports.UnsafePlaceholder = UnsafePlaceholder;
-exports.makeProps = makeProps;
-exports.make = make;
+export {
+  unsafePlaceholder ,
+  UnsafePlaceholder ,
+  makeProps ,
+  make ,
+}
 /* make Not a pure module */

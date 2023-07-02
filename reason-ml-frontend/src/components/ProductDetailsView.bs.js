@@ -1,6 +1,6 @@
-'use strict';
 
-var React = require("react");
+
+import * as React from "react";
 
 function ProductDetailsView(Props) {
   var message = Props.message;
@@ -9,5 +9,7 @@ function ProductDetailsView(Props) {
 
 var make = ProductDetailsView;
 
-exports.make = make;
+export {
+  make ,
+}
 /* react Not a pure module */

@@ -1,10 +1,10 @@
-'use strict';
 
-var React = require("react");
-var ReasonReactRouter = require("reason-react/src/ReasonReactRouter.bs.js");
-var NotFound$ReasonMlFrontend = require("../components/NotFound.bs.js");
-var ProductListPageLazy$ReasonMlFrontend = require("../pages/lazy/ProductListPageLazy.bs.js");
-var ProductDetailsPageLazy$ReasonMlFrontend = require("../pages/lazy/ProductDetailsPageLazy.bs.js");
+
+import * as React from "react";
+import * as ReasonReactRouter from "reason-react/src/ReasonReactRouter.bs.js";
+import * as NotFound$ReasonMlFrontend from "../components/NotFound.bs.js";
+import * as ProductListPageLazy$ReasonMlFrontend from "../pages/lazy/ProductListPageLazy.bs.js";
+import * as ProductDetailsPageLazy$ReasonMlFrontend from "../pages/lazy/ProductDetailsPageLazy.bs.js";
 
 function Router(Props) {
   var url = ReasonReactRouter.useUrl(undefined, undefined);
@@ -36,5 +36,7 @@ function Router(Props) {
 
 var make = Router;
 
-exports.make = make;
+export {
+  make ,
+}
 /* react Not a pure module */

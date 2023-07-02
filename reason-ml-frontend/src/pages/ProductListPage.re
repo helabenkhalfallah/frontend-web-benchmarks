@@ -1,6 +1,6 @@
 [@react.component]
 let make = () => {
-  <div> {React.string("Product List")} </div>;
+  <ProductListView message="Hello Hela" />;
 };
 
 let default = make;
