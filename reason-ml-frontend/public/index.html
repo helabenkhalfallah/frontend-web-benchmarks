@@ -2,13 +2,29 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="./logo512.png" />
+    <link rel="manifest" href="./manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Frontend project using JS(ES6) & React" />
-    <title>Frontend project using JS(ES6) & React</title>
+    <title>Frontend project using Reason & React</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="reasonml-frontend-root"></div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('./service-worker.js')
+            .then((registration) => {
+              // eslint-disable-next-line no-console
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              // eslint-disable-next-line no-console
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }       
+    </script>
   </body>
 </html>

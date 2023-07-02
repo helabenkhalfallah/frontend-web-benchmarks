@@ -3,25 +3,33 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-	context: __dirname,
 	mode: 'development',
 	devtool: 'eval',
 	entry: {
 		'frontend-reason': path.resolve(__dirname, '../src/Index.bs.js'),
 	},
 	output: {
-		filename: '[name].js',
 		path: path.resolve(__dirname, '../dist'),
 		publicPath: '/',
+		filename: 'frontend-reason-bundle.js',
 		clean: true,
 	},
 	devServer: {
-		port: 9002,
 		static: {
 			directory: path.resolve(__dirname, '../dist'),
 			publicPath: '/',
 		},
 		historyApiFallback: true,
+		allowedHosts: 'all',
+		compress: true,
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+			'Access-Control-Allow-Methods': '*',
+			'Access-Control-Allow-Headers': '*',
+		},
+		devMiddleware: {
+			writeToDisk: true,
+		},
 	},
 	module: {
 		rules: [

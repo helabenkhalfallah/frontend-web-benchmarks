@@ -19,7 +19,7 @@
   "author": "Ben Khalfallah Héla",
   "license": "MIT",
   "dependencies": {
-    "@emotion/css": "^11.11.2",
+    "@emotion/css": "=11.11.2",
     "react": "=16.8.1",
     "react-dom": "=16.8.1",
     "reason-react": ">=0.7.1",
