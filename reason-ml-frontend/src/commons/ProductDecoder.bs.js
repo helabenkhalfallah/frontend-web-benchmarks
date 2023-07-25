@@ -11,7 +11,8 @@ function decodeProduct(json) {
           brand: Json_decode.field("brand", Json_decode.string, json),
           category: Json_decode.field("category", Json_decode.string, json),
           description: Json_decode.field("description", Json_decode.string, json),
-          title: Json_decode.field("title", Json_decode.string, json)
+          title: Json_decode.field("title", Json_decode.string, json),
+          thumbnail: Json_decode.field("thumbnail", Json_decode.string, json)
         };
 }
 

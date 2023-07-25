@@ -14,7 +14,7 @@ let make = () => {
   
   let defaultParams = {
     skip: 0,
-    limit: 10,
+    limit: 100,
   };
   
   let (urlParams, setUrlParams) = React.useState(() => defaultParams);

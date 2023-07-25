@@ -6,6 +6,7 @@ type product = {
   category: string,
   description: string,
   title: string,
+  thumbnail: string,
 }
 
 type productResponse = {
@@ -21,7 +22,8 @@ let decodeProduct = (json) =>
     brand: json |> field("brand", string),
     category: json |> field("category", string),
     description: json |> field("description", string),
-    title: json |> field("title", string)
+    title: json |> field("title", string),
+    thumbnail: json |> field("thumbnail", string)
   };
 
 let decodeProducts = (json) =>

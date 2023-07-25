@@ -25,7 +25,7 @@ function ProductListView(Props) {
   var match$3 = React.useState(function () {
         return {
                 skip: 0,
-                limit: 10
+                limit: 100
               };
       });
   var urlParams = match$3[0];
