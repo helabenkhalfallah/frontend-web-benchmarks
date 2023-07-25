@@ -1,1 +1,18 @@
-/* This output is empty. Its source's type definitions, externals and/or unused code got optimized away. */
+
+
+import * as React from "react";
+import * as Css from "@emotion/css";
+
+function ProductListTitle(Props) {
+  var title = Props.title;
+  return React.createElement("h1", {
+              className: Css.css("\n\n		text-align: center;\n  ")
+            }, title);
+}
+
+var make = ProductListTitle;
+
+export {
+  make ,
+}
+/* react Not a pure module */

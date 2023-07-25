@@ -20,6 +20,8 @@
   "license": "MIT",
   "dependencies": {
     "@emotion/css": "=11.11.2",
+    "@glennsl/bs-json": "=5.0.4",
+    "bs-fetch": "=0.6.2",
     "react": "=16.8.1",
     "react-dom": "=16.8.1",
     "reason-react": ">=0.7.1",
